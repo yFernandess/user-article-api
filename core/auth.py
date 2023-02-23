@@ -48,7 +48,7 @@ def _create_token(token_type: str, ttl: timedelta, sub: str) -> str:
     payload["type"] = token_type
     payload["exp"] = expire
     payload["iat"] = datetime.now(tz_sp)
-    payload["sub"] = sub
+    payload["sub"] = str(sub)
 
     return jwt.encode(payload, settings.JWT_SECRET, algorithm=settings.ALGORITHM)
 
