@@ -59,8 +59,6 @@ async def get_current_user(db: Session = Depends(get_session),
         result = await session.execute(query)
         user: UserModel = result.scalars().unique().one_or_none()
 
-        print("PASSEI?")
-
         if user is None:
             raise credential_exception
 
